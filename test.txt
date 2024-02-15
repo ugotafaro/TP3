@@ -1,0 +1,19 @@
+# Create regions
+CREATE (:Region {name: "Region 1"})
+CREATE (:Region {name: "Region 2"})
+...
+
+# Create departments and establish relationships with regions
+MATCH (r:Region {name: "Region 1"})
+CREATE (r)-[:HAS_DEPARTMENT]->(:Department {name: "Department 1"})
+CREATE (r)-[:HAS_DEPARTMENT]->(:Department {name: "Department 2"})
+...
+
+# Create municipalities and establish relationships with departments
+MATCH (d:Department {name: "Department 1"})
+CREATE (d)-[:HAS_MUNICIPALITY]->(:Municipality {name: "Municipality 1", facilities: "Facilities 1", financial_statements: "Statements 1", mayor: "Mayor 1", population: 1000})
+CREATE (d)-[:HAS_MUNICIPALITY]->(:Municipality {name: "Municipality 2", facilities: "Facilities 2", financial_statements: "Statements 2", mayor: "Mayor 2", population: 2000})
+...
+
+# Add more relationships and properties as needed
+...
